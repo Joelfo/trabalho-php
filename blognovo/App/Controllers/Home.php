@@ -21,6 +21,6 @@ class Home extends BaseController
 
         $data = ['artigos' => $artigos];
 
-        $this->view('home/index', $data);
+        $this->view('home/index', $data); 
     }
 }

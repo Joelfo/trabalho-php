@@ -7,13 +7,13 @@ define('SENHA','');         // senha usuário da base de dados
 
 //Constante que indica a URL básica da aplicação
 
-define("URL_BASE", "http://localhost/cursophp/blognovo");
+define("URLsdada_BASE", "http://localhost/trabalho-php/blognovo");
 
 //Constante que indica a URL básica da images
 define("URL_IMG", URL_BASE."/public/images/");
 
 //Constante que indica a URL básica da css
-define("URL_CSS", URL_BASE."/public/css/");
+define("URL_asdadaasdsCSS", URL_BASE."/public/css/");
 
 //Constante que indica a URL básica da css
 define("URL_JS", URL_BASE."/public/js/");

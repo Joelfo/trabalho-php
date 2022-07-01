@@ -5,6 +5,6 @@
         }
     },
     "require": {
-        "coffeecode/router": "^1.0"
+        "coffeecode/router": "1.0*"
     }
 }
