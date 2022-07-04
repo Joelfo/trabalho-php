@@ -38,6 +38,20 @@ class FuncionarioDAO extends BaseDAO {
             die('Query falhou: ' . $e->getMessage());
         }
     }
+
+
+    public function getFuncionarioCPF($cpf){
+        $query = 'SELECT * FROM `funcionarios` WHERE `cpf`=?';
+        $conn = FuncionarioDAO::getConnection();
+
+        $stmt = $conn->prepare($query);
+        $stmt->bindValue(1, $cpf);
+        $stmt->execute();
+
+        $conn = null;
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
 }
 
 ?>

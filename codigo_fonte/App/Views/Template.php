@@ -1,4 +1,3 @@
-<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,7 @@
     <title>Área de Login</title>
     <!--bootstrap CSS-->
     <!--USANDO URL_BASE não está funcionando-->
-    <link href="http://localhost/trabalho-php/codigo fonte/Public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= URL_CSS?>bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <header>

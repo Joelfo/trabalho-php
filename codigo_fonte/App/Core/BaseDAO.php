@@ -11,7 +11,7 @@ class BaseDAO{
         $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
         try{//Conexão com o BD
-            return new PDO($dataBase, USUARIO, SENHA, $options);
+            return new PDO($dataBase, USER, PASSWORD, $options);
         } catch(PDOException $e){
             echo "Conexão ao BD falhou:" . $e->getMessage();
         }

@@ -8,13 +8,15 @@ $router->namespace("app\controllers");
 //Rotas:
 
 //Página inicial
-$router->get("/", "index:getIndex");
+$router->get("/", "AcessoRestrito:formLogin");
 
-if($router->error()){
+$router->post("/logar", "AcessoRestrito:login");
+
+/*if($router->error()){
     $router->redirect("/error/{router->error()}");
 }
 
-$router->get("/{errcode]", "Coffee:notFound");
+$router->get("/{errcode]", "Coffee:notFound");*/
 
 $router->dispatch();
 
