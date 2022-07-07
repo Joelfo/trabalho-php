@@ -13,5 +13,4 @@ Uma aplicação em PHP que apoia uma loja física de venda de produtos. Apresent
 forma pública os produtos disponíveis para a venda (não é uma loja virtual) e as tarefas
 relativas as compras e vendas de produtos na área privada.
 
-Apenas para testar
 
