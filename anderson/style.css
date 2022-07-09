@@ -1,0 +1,11 @@
+table{
+    background-color: aliceblue;
+}
+
+table tr td {
+    border: 2px  solid  blue;
+    padding: 5px ;
+
+li {float: left; padding: 10px;}
+    
+}

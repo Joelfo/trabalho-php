@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Loja</a>
+            <a class="navbar-brand" href="#">estoque</a>
             <ul class="navbar-nav ur-auto">
             <li class="nav-item active">
                 <a class="nav-link href="http://localhost/trabalho-php/codigo fonte/">Login</a>
