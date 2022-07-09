@@ -7,10 +7,15 @@ namespace Composer\Autoload;
 class ComposerStaticInitfc167b203a39ecc386b075bdfe86f2ea
 {
     public static $files = array (
+        'da253f61703e9c22a5a34f228526f05a' => __DIR__ . '/..' . '/wixel/gump/gump.class.php',
         '3bf9dbf327e74968b4253e146719be93' => __DIR__ . '/../..' . '/App/Core/Config.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'G' => 
+        array (
+            'GUMP\\' => 5,
+        ),
         'C' => 
         array (
             'CoffeeCode\\Router\\' => 18,
@@ -22,6 +27,10 @@ class ComposerStaticInitfc167b203a39ecc386b075bdfe86f2ea
     );
 
     public static $prefixDirsPsr4 = array (
+        'GUMP\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wixel/gump/src',
+        ),
         'CoffeeCode\\Router\\' => 
         array (
             0 => __DIR__ . '/..' . '/coffeecode/router/src',
