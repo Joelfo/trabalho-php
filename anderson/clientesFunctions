@@ -1,0 +1,71 @@
+<?php
+
+//Cadastrar Cliente
+ 
+function CadastrarCliente($nome, $cpf, $endereco, $bairro, $cidade, $uf, $cep, $telefone, $email){
+    $mysqli = new mysqli("localhost","root","","estoque");
+   $sql= "INSERT INTO clientes (nome, cpf, endereco, bairro, cidade, uf, cep, telefone, email) 
+   VALUES ('$nome', $cpf, '$endereco', '$bairro', '$cidade', '$uf', $cep, $telefone, '$email')";
+  
+
+   if ($mysqli->query($sql) === TRUE) {
+    echo "Cliente adicionado";
+    header("http://localhost/trabalho-php/anderson/teste.php");
+  } else {
+    echo "Error: " . $sql . "<br>" . $mysqli->error;
+  }
+}
+
+// função para  listar todos  os  clientes
+
+function ListarClientes(){
+  $mysqli = new mysqli("localhost","root","","estoque");
+ $sql= "Select * from  clientes";
+ $result= $mysqli->query($sql);
+
+echo (" <table>
+     <tr>
+         <td>ID</td>
+         <td>Nome</td>
+         <td>Cidade</td> 
+         <td></td>
+         <td></td>
+     </tr>");
+     
+         while($dado = $result->fetch_array(MYSQLI_ASSOC) ){ // coloca o  resultado da  query  em um array com  nome  da  coluna                         
+              echo( "<tr>
+                  <td>".$dado["id"]." </td>
+                  <td>'".  $dado["nome"]." </td>
+                  <td>". $dado["cidade"]." </td>                      
+                  <td>Editar</td>
+                  <td>Excluir</td>                  
+              </tr> ");
+
+             }                   
+          
+      }
+
+
+      // Função para deletar clientes
+
+      function DeletarCliente ($id) {
+        
+            $mysqli = new mysqli("localhost","root","root","");
+           $sql= "delete from clientes where id = $id";
+
+      }
+
+    /*function CadastrarCliente ($nome, $cpf, $endereco, $bairro, $cidade, $uf, $cep, $telefone, $email) {
+        $mysqli = new mysqli("localhost","root","","estoque");
+       $sql= "INSERT INTO clientes (nome, cpf,endereco, bairro, cidade, uf, cep, telefone email) VALUES ($nome, $cpf, $endereco, $bairro, $cidade, $uf, $cep, $telefone, $email)";
+      
+    
+       if ($mysqli->query($sql) === TRUE) {
+        echo "Funcionario adicionado";
+      } else {
+        echo "Error: " . $sql . "<br>" . $mysqli->error;
+      }
+    }
+*/
+
+?>
