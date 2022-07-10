@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => '__root__',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '16c94f82928f519f7d4343d67e0231f78a4f662a',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '16c94f82928f519f7d4343d67e0231f78a4f662a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'coffeecode/router' => array(
+            'pretty_version' => '1.0.8',
+            'version' => '1.0.8.0',
+            'reference' => '29f73e12351a116e9bbb3f695595777a09e18077',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../coffeecode/router',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'wixel/gump' => array(
+            'pretty_version' => 'v1.12.2',
+            'version' => '1.12.2.0',
+            'reference' => '3878abe3cb53c90bfce59add8eb18f78b1955445',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../wixel/gump',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);
