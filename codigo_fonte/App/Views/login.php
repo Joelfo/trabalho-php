@@ -12,7 +12,7 @@
     </div>
 
     <div class="form-group">
-        <?php echo $dados['imagemCaptcha'] ?>
+        <?php echo $dados['imagem_captcha'] ?>
     </div>
     <div class="form-group">
         <input id="captcha" class="form-control" type="text" name="captcha" placeholder="Digite o código acima" aria-describedby="captchaHelp">

@@ -22,13 +22,13 @@ class AcessoRestrito extends baseController {
         session_start();
     }
 
-    public function formLogin(){
+    public function formLogin($dados = []){
         // gera o CAPTCHA_CODE e guarda na sessão 
         $_SESSION['Codigo_Captcha'] = Funcoes::gerarCodigoCaptcha();
         $imagem = Funcoes::gerarImgCaptcha($_SESSION['Codigo_Captcha']);
         // gera o CSRF_token e guarda na sessão
         $_SESSION['Token_CSRF'] = Funcoes::gerarTokenCSRF();
-        $dados = ['imagem_captcha' => $imagem];
+        $dados['imagem_captcha'] = $imagem;
         $this->chamarView('AcessoRestrito/Login', $dados);
     }
 
@@ -66,7 +66,9 @@ class AcessoRestrito extends baseController {
                     endif;
                 endif;
             else:
-                var_dump()
+                $mensagens = $validador->get_errors_array();
+                $dados['mensagens'] = $mensagens;
+                $this->formLogin($dados);
                 
             endif;
         endif;
