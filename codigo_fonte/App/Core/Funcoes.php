@@ -2,7 +2,10 @@
 namespace App\Core;
 
 class Funcoes{
-    static function gerarTokenCSRF(){
+    
+    
+
+    public static function gerarTokenCSRF(){
         //Gera uma string aleatória contendo valores hexadecimais
         /* hexa_aleatorio armazena o resultado da função openssl_random_pseudo_bytes que 
         é uma sequência aleatória de 16 bytes, convertido para representação hexadecimal, através da função bin2hex.
@@ -10,18 +13,28 @@ class Funcoes{
         camada de hash sobre o valor aleatório é para que impedir que alguém externo consiga compreender a lógica 
         de geração dos valores.
         */ 
-        $hexa_aleatorio = bin2hex(openssl_random_pseudo_bytes(16));
-        //return hash_hmac('sha256', $hexa_aleatorio, CSRF_TOKEN_SECRET);
+        $string_aleatoria = bin2hex(openssl_random_pseudo_bytes(16));
+        return hash_hmac('sha256', $string_aleatoria, CSRF_TOKEN_SECRET);
     }
 
-    static function gerarCodigoCaptcha(){
-        // gerar a sequencia aleatória
+
+    public static function validarTokenCSRF($token_crsf, $token_session)
+    {
+        $token_crsf_original = $token_session;
+        if (hash_equals($token_crsf_original, $token_crsf)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function gerarCodigoCaptcha(){
+      // gerar a sequencia aleatória
       $random_num = rtrim(strtr(base64_encode(random_bytes(32)), '+/', '-_'), '=');
       $captcha_code  = substr($random_num, 0, 5); // usa apenas os 5 primeiros caracteres
       return $captcha_code;
     }
 
-    static function gerarImgCaptcha($captcha_code){
+    public static function gerarImgCaptcha($captcha_code){
         $nome_imagem  = random_int(10000, 9999999); // usa apenas os 5 primeiros caracteres
 
         // cria uma imagem a partir de template_cap.jpg
@@ -49,6 +62,10 @@ class Funcoes{
         return '<img src="' . $src . '">';
         
 
+    }
+
+    public static function redirecionar($rota = ""){
+        header("Location:" . URL_BASE . "/" . $rota);
     }
 }
 ?>

@@ -12,11 +12,11 @@
     </div>
 
     <div class="form-group">
-        <?php echo $dados['ImagemCaptcha']; ?>
+        <?php echo $dados['imagem_captcha']; ?>
         <input type="text" id="captcha" class="form-control" name="captcha" placeholder="Digite o código acima" aria-describedby="captchaHelp">
         <small id="captchaHelp" class="form-text text-muted"> Prove que você não é um robô </small>
     </div>
 
-    <input type="hidden" id="token_CSRF" name="token_CSRF" value="<?=$_SESSION['Token_CSRF']?>">
+    <input type="hidden" id="Token_CSRF" name="Token_CSRF" value="<?=$_SESSION['Token_CSRF']?>">
     <button type="submit" class="btn btn-secondary">Login</button>
 </form>
