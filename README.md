@@ -4,9 +4,7 @@ Repositório destinado ao trabalho da disciplina TÓPICOS EM ENGENHARIA DE SOFWA
 <<<<<<< Updated upstream
 - Joel Lopes Cunha de Souza
 - Anderson Paixão dos Reis 
-=======
-- Joel Lopes Cunha de Souza.
-- Anderson Paixão dos Reis.
+
 >>>>>>> Stashed changes
 ## Visão da solução:
 Uma aplicação em PHP que apoia uma loja física de venda de produtos. Apresenta de
