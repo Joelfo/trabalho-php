@@ -7,9 +7,13 @@ $router = new \CoffeeCode\Router\Router('http://localhost/trabalho-php/codigo fo
 $router->namespace("app\controllers");
 //Rotas:
 
-//Página inicial
+//Rotas GET:
+//Página inicial(login)
 $router->get("/", "AcessoRestrito:formLogin");
 
+//Dashboard de Vendedor
+$router->get("/Dashboard_Vendedor", "DashboardVendedor:index");
+//Rotas POST:
 $router->post("/logar", "AcessoRestrito:login");
 
 /*if($router->error()){
