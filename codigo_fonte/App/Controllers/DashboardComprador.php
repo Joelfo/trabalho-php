@@ -3,7 +3,7 @@ namespace App\Controllers;
 Use App\Core\BaseController;
 Use App\Core\Funcoes;
 
-class DashboardVendedor extends BaseController {
+class DashboardComprador extends BaseController {
     public function __construct()
     {
         session_start();
@@ -14,7 +14,7 @@ class DashboardVendedor extends BaseController {
     }
 
     public function index(){
-        $this->chamarView('DashboardComprador/index');
+        $this->chamarView('DashboardComprador/Index');
     }
 
 }

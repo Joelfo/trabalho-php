@@ -8,9 +8,10 @@ class BaseController {
     }
 
     function getDAO($model) {
-        $nomeArquivo = "App/Models/" . $model . ".php";
+        $nomeArquivo = "App/Models/" . $model . "/" . $model . "DAO.php";
         if(file_exists($nomeArquivo)):
             require_once $nomeArquivo;
+            $model = $model . "DAO";
             return new $model;
         else:
             echo "DAO não encontrado";

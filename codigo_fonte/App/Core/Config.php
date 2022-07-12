@@ -9,7 +9,7 @@ define('PASSWORD', '');
 
 define('URL_BASE', 'http://localhost/trabalho-php/codigo_fonte');
 
-define("URL_CSS", URL_BASE."/Public/css/");
+define("URL_CSS", URL_BASE . "/Public/css/");
 define("URL_JS", URL_BASE . "/Public/js/");
 
 //Diretório do background para a imagem CAPTCHA
@@ -20,4 +20,5 @@ define('REGRAS_ENTRADA_FUNCIONARIO', ['cpf' => 'required|exact_len,14|cpf_valido
 //Constante para gerar o Token CSRF
 define('CSRF_TOKEN_SECRET', 'iyHS4##SiPcV9tIZ');
 
+define('URL_IMG', URL_BASE . "/Public/img/")
 ?>

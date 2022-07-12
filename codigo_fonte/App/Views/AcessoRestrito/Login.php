@@ -13,7 +13,7 @@
 
     <div class="form-group">
         <?php echo $dados['imagem_captcha']; ?>
-        <input type="text" id="captcha" class="form-control" name="captcha" placeholder="Digite o código acima" aria-describedby="captchaHelp">
+        <input type="text" id="captcha" class="form-control" name="captcha" value="<?php echo $_SESSION['Codigo_Captcha']; ?>" aria-describedby="captchaHelp">
         <small id="captchaHelp" class="form-text text-muted"> Prove que você não é um robô </small>
     </div>
 

@@ -21,7 +21,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['nomeUsuario'])) : ?>
         </div>
         <div class="card mt-3 border-0">
             <div class="card-body px-2">
-            <a href="<?= url('painelusuario') ?>" class="btn btn-outline-primary">Usuarios</a>
+            <?php // perguntar ao professor de onde vem essa função ?>
+            <a href="<?= url('painelusuario') ?>"  class="btn btn-outline-primary">Usuarios</a>
             </div>
         </div>
 

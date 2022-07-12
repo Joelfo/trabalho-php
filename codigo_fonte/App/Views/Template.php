@@ -10,6 +10,7 @@
     <link href="<?= URL_CSS?>bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="container-fluid">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">estoque</a>
@@ -26,5 +27,6 @@
     <footer>
 
     </footer>
+</div>
 </body>
 </html>

@@ -12,8 +12,12 @@ $router->namespace("app\controllers");
 $router->get("/", "AcessoRestrito:formLogin"); //http://localhost/trabalho-php/codigo_fonte/
 $router->get("/Home", "AcessoRestrito:formLogin");
 
+//LOGOUT
+$router->get("/Logout", "AcessoRestrito:logOut");
+
 //Dashboard de Vendedor
 $router->get("/Dashboard_Vendedor", "DashboardVendedor:index");
+$router->get("/Dashboard_Comprador", "DashboardComprador:index");
 //Rotas POST:
 $router->post("/logar", "AcessoRestrito:login");
 

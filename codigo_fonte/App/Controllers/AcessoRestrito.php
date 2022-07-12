@@ -20,6 +20,10 @@ class AcessoRestrito extends baseController {
     
     public function __construct(){
         session_start();
+        if(Funcoes::usuarioLogado()){
+            $rota = $this->retornaRotaPorPapel($_SESSION['papel_usuario']);
+            Funcoes::redirecionar($rota);
+        }
     }
 
     public function formLogin($dados = []){
@@ -46,7 +50,7 @@ class AcessoRestrito extends baseController {
                 if(Funcoes::validarTokenCSRF($post_filtrado['Token_CSRF'], $_SESSION['Token_CSRF']) === true):
 
                     $senhaEnviada = $_POST['senha']; 
-                    $funcionarioDAO = AcessoRestrito::getDAO("FuncionarioDAO");
+                    $funcionarioDAO = AcessoRestrito::getDAO("Funcionario");
                     var_dump($_POST);
                     $senha_falsa = random_bytes(64);
                     $funcionario = $funcionarioDAO->getFuncionarioCPF($_POST["cpf"]);
@@ -61,18 +65,25 @@ class AcessoRestrito extends baseController {
                         $_SESSION['nome_usuario'] = $funcionario['nome'];
                         $_SESSION['cpf_usuario'] = $funcionario['cpf'];
                         $_SESSION['papel_usuario'] = $funcionario['papel'];
-                        $rota = $this->retornaRotaPorPapel($_SESSION['papel_funcionario']);
+                        $rota = $this->retornaRotaPorPapel($_SESSION['papel_usuario']);
                         Funcoes::redirecionar($rota);
                     endif;
                 endif;
             else:
                 $mensagens = $validador->get_errors_array();
                 $dados['mensagens'] = $mensagens;
+    
                 $this->formLogin($dados);
                 
             endif;
         endif;
      
+    }
+
+    public function logOut(){
+        session_unset();
+        session_destroy();
+        Funcoes::redirecionar("Home");
     }
 
     private function retornaRotaPorPapel($papel){
