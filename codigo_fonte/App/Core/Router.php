@@ -21,6 +21,9 @@ $router->get("/Dashboard_Comprador", "DashboardComprador:index");
 //Rotas POST:
 $router->post("/logar", "AcessoRestrito:login");
 
+// DashboardClientes Cliente.php
+$router->get("/Clientes", "Cliente:listarCliente");
+
 /*if($router->error()){
     $router->redirect("/error/{router->error()}");
 }

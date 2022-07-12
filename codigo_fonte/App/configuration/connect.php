@@ -1,4 +1,7 @@
 <?php
+    namespace App\configuration;
+    use \PDO;
+    use \PDOException;
     define('HOST', 'localhost');
     define('DBNAME', 'estoque');
     define('USER', 'root');

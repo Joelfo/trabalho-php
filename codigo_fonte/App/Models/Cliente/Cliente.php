@@ -1,6 +1,8 @@
 <?php
 
-require_once "././configuration/connect.php";
+namespace App\Models\Cliente;
+ 
+use App\configuration\Connect;
 
 class ClientModel extends Connect{
     

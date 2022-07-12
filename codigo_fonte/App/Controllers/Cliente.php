@@ -2,6 +2,9 @@
 namespace App\Controllers;
 use App\Core\BaseController;
 Use App\Core\Funcoes;
+
+use App\Models\Cliente\ClientModel;
+
 Use GUMP;
 /*
 CRUD DE CLIENTES
@@ -14,24 +17,21 @@ class Cliente extends baseController{
             Funcoes::redirecionar("Home");
         }
     }
-}
 
-class ClienteController {
 
-    public static function index(){
-       include 'view/dashboardClietes/listarClientes.php' ;
+    public function listarCliente(){
+       $this->chamarView('DashboardClientes/cliente');
     }
-
-    
 }
 
-
-// Funções  do Cliente controle
-require_once ("./Models/Cliente/Cliente.php");
 
 class ClientsController{
 
     private $model;
+
+   /* public static function index(){
+        include 'view/dashboardClietes/listarClientes.php' ;
+     }*/
 
     function __construct(){
         $this->model = new ClientModel();
