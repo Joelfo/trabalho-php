@@ -19,7 +19,7 @@ class Cliente extends baseController{
 class ClienteController {
 
     public static function index(){
-       include 'view/dashboardClietes/listarClientes.php' 
+       include 'view/dashboardClietes/listarClientes.php' ;
     }
 
     
@@ -27,7 +27,7 @@ class ClienteController {
 
 
 // Funções  do Cliente controle
-require_once ("./Models/Cliente.php");
+require_once ("./Models/Cliente/Cliente.php");
 
 class ClientsController{
 

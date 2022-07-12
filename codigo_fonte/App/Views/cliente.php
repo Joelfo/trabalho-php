@@ -2,7 +2,7 @@
 
     // $nameController = $_GET['c'];
     // include_once ('./controllers/'.$nameController.'Controller.php');
-    require_once ("./Controllers/clientesController.php");
+    require_once ("./Controllers/cliente.php");
 
     $controller = new ClientsController();
 

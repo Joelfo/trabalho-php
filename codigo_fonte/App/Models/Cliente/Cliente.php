@@ -1,6 +1,6 @@
 <?php
 
-require_once "./configuration/connect.php";
+require_once "././configuration/connect.php";
 
 class ClientModel extends Connect{
     
