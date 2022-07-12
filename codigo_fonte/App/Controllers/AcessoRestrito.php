@@ -58,9 +58,9 @@ class AcessoRestrito extends baseController {
                     if($senha_a_comparar === $senhaEnviada):
                         session_regenerate_id(true);
                         $_SESSION['id'] = $funcionario['id'];
-                        $_SESSION['nome_funcionario'] = $funcionario['nome'];
-                        $_SESSION['cpf_funcionario'] = $funcionario['cpf'];
-                        $_SESSION['papel_funcionario'] = $funcionario['papel'];
+                        $_SESSION['nome_usuario'] = $funcionario['nome'];
+                        $_SESSION['cpf_usuario'] = $funcionario['cpf'];
+                        $_SESSION['papel_usuario'] = $funcionario['papel'];
                         $rota = $this->retornaRotaPorPapel($_SESSION['papel_funcionario']);
                         Funcoes::redirecionar($rota);
                     endif;

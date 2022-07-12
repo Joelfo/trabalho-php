@@ -1,22 +1,19 @@
 <?php
 namespace App\Controllers;
-Use App\Core\BaseController;
+use App\Core\BaseController;
 Use App\Core\Funcoes;
+Use GUMP;
+/*
+CRUD DE CLIENTES
+*/
 
-class DashboardVendedor extends BaseController {
-    public function __construct()
-    {
+class Cliente extends baseController{
+    public function __construct(){
         session_start();
         if(!(Funcoes::usuarioLogado() && Funcoes::usuarioVendedor())){
             Funcoes::redirecionar("Home");
         }
-
     }
-
-    public function index(){
-        $this->chamarView('DashboardVendedor/Index');
-    }
-
 }
 
 ?>

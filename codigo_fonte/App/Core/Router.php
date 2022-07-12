@@ -9,7 +9,8 @@ $router->namespace("app\controllers");
 
 //Rotas GET:
 //Página inicial(login)
-$router->get("/", "AcessoRestrito:formLogin");
+$router->get("/", "AcessoRestrito:formLogin"); //http://localhost/trabalho-php/codigo_fonte/
+$router->get("/Home", "AcessoRestrito:formLogin");
 
 //Dashboard de Vendedor
 $router->get("/Dashboard_Vendedor", "DashboardVendedor:index");

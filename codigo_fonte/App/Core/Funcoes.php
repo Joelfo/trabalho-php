@@ -67,5 +67,17 @@ class Funcoes{
     public static function redirecionar($rota = ""){
         header("Location:" . URL_BASE . "/" . $rota);
     }
+
+    public static function usuarioLogado(){
+        return isset($_SESSION['id']) && isset($_SESSION['cpf_usuario']);
+    }
+
+    public static function usuarioVendedor(){
+        return $_SESSION['papel_usuario'] == 1;
+    }
+
+    public static function usuarioComprador(){
+        return $_SESSION['papel_usuario'] == 2;
+    }
 }
 ?>

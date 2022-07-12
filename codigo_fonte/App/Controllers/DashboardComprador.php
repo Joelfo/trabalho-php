@@ -7,14 +7,14 @@ class DashboardVendedor extends BaseController {
     public function __construct()
     {
         session_start();
-        if(!(Funcoes::usuarioLogado() && Funcoes::usuarioVendedor())){
+        if(!(Funcoes::usuarioLogado() && Funcoes::usuarioComprador())){
             Funcoes::redirecionar("Home");
         }
 
     }
 
     public function index(){
-        $this->chamarView('DashboardVendedor/Index');
+        $this->chamarView('DashboardComprador/index');
     }
 
 }
