@@ -1,8 +1,9 @@
 <?php
 use App\Core\BaseDAO;
+use App\Models\Funcionario\Funcionario;
 
 class FuncionarioDAO extends BaseDAO {
-    public function create($funcionario){
+    public function create(Funcionario $funcionario){
         try{ //Tenta a inserção
             $query = "INSERT INTO `funcionarios` (`id`, `nome`, `cpf`, `senha`, `papel`) VALUES(?, ?, ?, ?, ?)";
             $conn = FuncionarioDAO::getConnection();
@@ -22,6 +23,8 @@ class FuncionarioDAO extends BaseDAO {
             die('Query falhou: ' . $e->getMessage());
         }
     } 
+
+
 
     public function get($id){
         try { //Tenta executar a consulta

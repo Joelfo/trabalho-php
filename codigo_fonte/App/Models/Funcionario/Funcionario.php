@@ -1,4 +1,6 @@
 <?php
+namespace App\Models\Funcionario;
+
 class Funcionario{
     private $id, $nome, $cpf, $senha, $papel;
 

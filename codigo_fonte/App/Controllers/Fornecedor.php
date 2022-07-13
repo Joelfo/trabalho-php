@@ -14,6 +14,15 @@ class Fornecedor extends baseController{
             Funcoes::redirecionar("Home");
         }
     }
+
+    public function ajax_lista(){
+        $lista_fornecedores = $this->getDAO('Fornecedor')->read();
+        if(!empty($lista_fornecedores)){
+            foreach($lista_fornecedores as $fornecedor){
+                $corpo_tabela .= ""
+            }
+        }
+    }
 }
 
 ?>
