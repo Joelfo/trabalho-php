@@ -27,6 +27,17 @@
     <footer>
 
     </footer>
+    <script src="<?= URL_JS ?>jquery-3.6.0.min.js"></script>
+    <script src="<?= URL_JS ?>popper.min.js"></script>
+    <script src="<?= URL_JS ?>bootstrap.min.js"></script>
+    
+    
+
+    <?php 
+    if($js != null):
+        require_once 'App/Views/' . $js . ".php";
+    endif;
+    ?>
 </div>
 </body>
 </html>

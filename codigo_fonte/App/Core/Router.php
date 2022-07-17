@@ -21,8 +21,22 @@ $router->get("/Dashboard_Comprador", "DashboardComprador:index");
 //Rotas POST:
 $router->post("/logar", "AcessoRestrito:login");
 
+//FORNECEDORES:
+//Index do dashboard de fornecedores
+$router->get("/Fornecedores", "Fornecedor:index");
+//Método para listar fornecedores
+$router->get("/Fornecedores/Listar", "Fornecedor:ajax_lista");
+//Atualizar um fornecedor
+$router->get("/Fornecedores/Atualizar/{id-fornecedor}", "Fornecedor:atualizar");
+//Gravar atualizações
+$router->post("/Fornecedores/Gravar/Atualização", 'Fornecedor:gravar_atualizacao');
+
+
 // DashboardClientes Cliente.php
 $router->get("/Clientes", "Cliente:listarCliente");
+
+// Solicitar um token CSRF para inclusão de usuário. Legal para utilizar com AJAX
+//$router->get("/Fornecedores/Atualizar/{id}", "Fornecedor:atualizar");
 
 /*if($router->error()){
     $router->redirect("/error/{router->error()}");

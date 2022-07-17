@@ -39,7 +39,7 @@ class FornecedorDAO extends BaseDAO {
             $stmt->execute();
 
             $conn = null;
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch(PDOException $e){
             die('Query falhou: ' . $e->getMessage());
         }
