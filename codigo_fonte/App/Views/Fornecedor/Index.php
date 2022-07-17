@@ -1,4 +1,5 @@
 <h2>Lista de fornecedores</h2>
+<button id="btn-incluir" class="btn btn-success">Novo</button>
 <table class="table table-hover">
     <thead>
         <tr>
@@ -19,7 +20,7 @@
     </tbody>
 </table>
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-fornecedor">Open modal</button>
+
 <div id="modal-fornecedor" class="modal fade" tabindex="-1" role="dialog" data-bs-backdrop="static" aria-labelledby="modal-fornecedor-title" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

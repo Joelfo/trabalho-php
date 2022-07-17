@@ -26,10 +26,16 @@ $router->post("/logar", "AcessoRestrito:login");
 $router->get("/Fornecedores", "Fornecedor:index");
 //Método para listar fornecedores
 $router->get("/Fornecedores/Listar", "Fornecedor:ajax_lista");
+
+//Incluir um novo fornecedor
+$router->get("/Fornecedores/Incluir", "Fornecedor:incluir");
+//Gravar inclusão
+$router->post("/Fornecedores/Incluir/Gravar", "Fornecedor:gravar_inclusao");
+
 //Atualizar um fornecedor
 $router->get("/Fornecedores/Atualizar/{id-fornecedor}", "Fornecedor:atualizar");
 //Gravar atualizações
-$router->post("/Fornecedores/Gravar/Atualizacao", 'Fornecedor:gravar_atualizacao');
+$router->post("/Fornecedores/Atualizar/Gravar", 'Fornecedor:gravar_atualizacao');
 
 
 // DashboardClientes Cliente.php

@@ -6,26 +6,23 @@ class FornecedorDAO extends BaseDAO {
 
     public function create(Fornecedor $fornecedor){
         try{ //Tenta a inserção
-            $query = "INSERT INTO `fornecedores` (`id` , `razao_social`, `cnpj`, `endereco`, `bairro`, `cidade`, `uf`, `cep`, `telefone, `email`) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO `fornecedores` (`razao_social`, `cnpj`, `endereco`, `bairro`, `cidade`, `uf`, `cep`, `telefone`, `email`) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $conn = $this->getConnection();
             $stmt = $conn->prepare($query);
-            $stmt->bindValue(1, $fornecedor->getId());
-            $stmt->bindValue(2, $fornecedor->getRazaoSocial());
-            $stmt->bindValue(3, $fornecedor->getCnpj());
-            $stmt->bindValue(4, $fornecedor->getEndereco());
-            $stmt->bindValue(5, $fornecedor->getBairro());
-            $stmt->bindValue(6, $fornecedor->getCidade());
-            $stmt->bindValue(7, $fornecedor->getUf());
-            $stmt->bindValue(8, $fornecedor->getCep());
-            $stmt->bindValue(9, $fornecedor->getTelefone());
-            $stmt->bindValue(10, $fornecedor->getEndereco());
+            $stmt->bindValue(1, $fornecedor->getRazaoSocial());
+            $stmt->bindValue(2, $fornecedor->getCnpj());
+            $stmt->bindValue(3, $fornecedor->getEndereco());
+            $stmt->bindValue(4, $fornecedor->getBairro());
+            $stmt->bindValue(5, $fornecedor->getCidade());
+            $stmt->bindValue(6, $fornecedor->getUf());
+            $stmt->bindValue(7, $fornecedor->getCep());
+            $stmt->bindValue(8, $fornecedor->getTelefone());
+            $stmt->bindValue(9, $fornecedor->getEmail());
             $stmt->execute();
 
-            $chaveGerada = $conn->lastInsertId();
             $conn = null;
-            return $chaveGerada;
         } catch(PDOException $e){
-            die('Query falhou: ' . $e->getMessage());
+            return "Erro";
         }
     } 
 

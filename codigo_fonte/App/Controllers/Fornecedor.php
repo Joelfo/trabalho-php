@@ -66,6 +66,51 @@ class Fornecedor extends baseController{
         
     }
 
+    public function incluir(){
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') :
+            $_SESSION['Token_CSRF'] = Funcoes::gerarTokenCSRF();
+            $dados = array();
+            $dados['Token_CSRF'] = $_SESSION['Token_CSRF'];
+            $dados['status'] = true;
+            echo json_encode($dados);
+            exit();
+        else:
+            Funcoes::redirecionar("Home");
+        endif;
+    }
+
+    public function gravar_inclusao(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'):
+            if($_POST['token-csrf'] == $_SESSION['Token_CSRF']):
+                
+                $fornecedor = new \App\Models\Fornecedor\Fornecedor();
+                
+                $fornecedor->setRazaoSocial($_POST['razao-social']);
+                $fornecedor->setCnpj($_POST['cnpj']);
+                $fornecedor->setEndereco($_POST['endereco']);
+                $fornecedor->setBairro($_POST['bairro']);
+                $fornecedor->setCidade($_POST['cidade']);
+                $fornecedor->setUf($_POST['uf']);
+                $fornecedor->setCep($_POST['cep']);
+                $fornecedor->setTelefone($_POST['telefone']);
+                $fornecedor->setEmail($_POST['email']);
+                
+                $fornecedorDAO = $this->getDAO('Fornecedor');
+                $result = $fornecedorDAO->create($fornecedor);
+
+                $dados = array();
+                $dados['status'] = true;
+                echo json_encode($dados);
+                exit();
+            else:
+                $dados['status'] = false;
+                $dados['erro'] = 'Token CSRF invalido';
+                echo json_encode($dados);
+                exit();
+            endif;
+        endif;
+    }
+
     public function atualizar($dados){
         $id = $dados['id-fornecedor'];
         $_SESSION['Token_CSRF'] = Funcoes::gerarTokenCSRF();
