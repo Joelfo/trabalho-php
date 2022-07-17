@@ -29,6 +29,30 @@ class FornecedorDAO extends BaseDAO {
         }
     } 
 
+    public function update(Fornecedor $fornecedor){
+        try{
+            $query = "UPDATE `fornecedores` SET `razao_social` = ?, `cnpj` = ?, `endereco` = ?,  `bairro` = ?, `cidade` = ?,`uf` = ?, `cep` = ?, `telefone` = ?, `email` = ? WHERE `id` = ?";
+            $conexao = $this->getConnection();
+
+            $stmt = $conexao->prepare($query);
+            $stmt->bindValue(1, $fornecedor->getRazaoSocial());
+            $stmt->bindValue(2, $fornecedor->getCnpj());
+            $stmt->bindValue(3, $fornecedor->getEndereco());
+            $stmt->bindValue(4, $fornecedor->getBairro());
+            $stmt->bindValue(5, $fornecedor->getCidade());
+            $stmt->bindValue(6, $fornecedor->getUf());
+            $stmt->bindValue(7, $fornecedor->getCep());
+            $stmt->bindValue(8, $fornecedor->getTelefone());
+            $stmt->bindValue(9, $fornecedor->getEmail());
+            $stmt->bindValue(10, $fornecedor->getId());
+            
+            $stmt->execute();
+            $conexao = null;
+        } catch(PDOException $e){
+            die('Query falhou: ' . $e->getMessage());
+        }
+    }
+
     public function get($id){
         try { //Tenta executar a consulta
             $query = "SELECT * FROM `fornecedores` WHERE `id`=?";

@@ -2,18 +2,6 @@
 namespace App\Models\Fornecedor;
 
 class Fornecedor {
-    public function __construct($id = 0, $razao_social, $cnpj, $endereco, $bairro, $cidade, $uf, $cep, $telefone, $email){
-        $this->id = $id;
-        $this->razao_social = $razao_social;
-        $this->cnpj = $cnpj;
-        $this->endereco = $endereco;
-        $this->bairro = $bairro;
-        $this->cidade = $cidade;
-        $this->uf = $uf;
-        $this->cep = $cep;
-        $this->telefone = $telefone;
-        $this->email = $email;
-    }
 
     public function getId(){
         return $this->id;
@@ -59,6 +47,41 @@ class Fornecedor {
         $this->id = $id;
     }
     
+    public function setRazaoSocial($razao_social){
+        $this->razao_social = $razao_social;
+    }
+
+    public function setCnpj($cnpj){
+        $this->cnpj = $cnpj;
+    }
+
+    public function setEndereco($endereco){
+        $this->endereco = $endereco;
+    }
+
+    public function setBairro($bairro){
+        $this->bairro = $bairro;
+    }
+
+    public function setCidade($cidade){
+        $this->cidade = $cidade;
+    }
+
+    public function setCep($cep){
+        $this->cep = $cep;
+    }
+
+    public function setUf($uf){
+        $this->uf = $uf;
+    }
+
+    public function setTelefone($telefone){
+        $this->telefone = $telefone;
+    }
+
+    public function setEmail($email){
+        $this->email = $email;
+    }
 }
 
 ?>

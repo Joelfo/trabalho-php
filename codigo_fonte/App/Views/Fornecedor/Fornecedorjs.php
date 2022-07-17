@@ -51,19 +51,26 @@ $(document).ready(function(){
         });
         
         $('#btn-salvar').on('click', function(){
-            let url_ajax = '<?= URL_BASE ?>/Fornecedores/Gravar/Atualização';
+            var url_ajax = '<?= URL_BASE ?>/Fornecedores/Gravar/Atualizacao';
             $.ajax({
                 url: url_ajax,
-                type:'POST',
+                type: 'POST',
                 data: $('#form-fornecedor').serialize(),
                 dataType: 'JSON',
                 success: function(dados){
                     // Update CSRF hash
-                    $('[name="CSRF_token"]').val(data.token);
-                    if(data.status){
+                    //$('[name="CSRF_token"]').val(dados.token);
+                    if(dados.status){
                         alert('Usuário alterado com sucesso');
+                    } else {
+                        alert('Erro:' + dados.erro);
+
                     }
-                }
+                },
+                error:function(){
+                alert('Ocorreu um erro');
+            }
+                
 
             })
         })

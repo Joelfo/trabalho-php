@@ -28,14 +28,18 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
             </div>
             <div class="modal-body">
-                <form action="" id="form-fornecedor" method="POST">
+                <form action="<?= URL_BASE ?>/Fornecedores/Gravar/Atualizacao" id="form-fornecedor" method="POST">
                     <div class="form-group">
                         <label for="razao-social">Razão Social</label>
-                        <input type="text" class="form-control" id="razao-social" name="razao_social"> 
+                        <input type="text" class="form-control" id="razao-social" name="razao-social"> 
                     </div>
                     <div class="form-group">
                         <label for="cnpj">Cnpj</label>
                         <input type="text" class="form-control" id="cnpj" name="cnpj"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="cnpj">Endereço</label>
+                        <input type="text" class="form-control" id="endereco" name="endereco"> 
                     </div>
                     <div class="form-group">
                         <label for="bairro">Bairro</label>

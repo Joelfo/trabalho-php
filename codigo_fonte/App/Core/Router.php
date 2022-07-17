@@ -29,7 +29,7 @@ $router->get("/Fornecedores/Listar", "Fornecedor:ajax_lista");
 //Atualizar um fornecedor
 $router->get("/Fornecedores/Atualizar/{id-fornecedor}", "Fornecedor:atualizar");
 //Gravar atualizações
-$router->post("/Fornecedores/Gravar/Atualização", 'Fornecedor:gravar_atualizacao');
+$router->post("/Fornecedores/Gravar/Atualizacao", 'Fornecedor:gravar_atualizacao');
 
 
 // DashboardClientes Cliente.php

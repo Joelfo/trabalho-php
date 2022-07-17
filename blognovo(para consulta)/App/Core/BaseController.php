@@ -23,6 +23,7 @@ class BaseController {
         require_once 'App/Views/template.php';
     }
 
+    
 
 
 }

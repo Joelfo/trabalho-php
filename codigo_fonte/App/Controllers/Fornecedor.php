@@ -96,12 +96,40 @@ class Fornecedor extends baseController{
     }
 
     public function gravar_atualizacao(){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'):
-            if($_POST['Token_CSRF'] == $_SESSION['Token_CSRF']):
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') :
+            /*$dados['status'] = true;
+            echo json_encode($dados);
+            exit();*/
+            if($_POST['token-csrf'] == $_SESSION['Token_CSRF']):
+                
                 $fornecedor = new \App\Models\Fornecedor\Fornecedor();
+                
+                $fornecedor->setId($_POST['id-fornecedor']);
+                
+                $fornecedor->setRazaoSocial($_POST['razao-social']);
+                $fornecedor->setCnpj($_POST['cnpj']);
+                $fornecedor->setEndereco($_POST['endereco']);
+                $fornecedor->setBairro($_POST['bairro']);
+                $fornecedor->setCidade($_POST['cidade']);
+                $fornecedor->setUf($_POST['uf']);
+                $fornecedor->setCep($_POST['cep']);
+                $fornecedor->setTelefone($_POST['telefone']);
+                $fornecedor->setEmail($_POST['email']);
+                
+                $fornecedorDAO = $this->getDAO('Fornecedor');
+                $fornecedorDAO->update($fornecedor);
+
+                $dados['status'] = true;
+                echo json_encode($dados);
+                exit();
+            else:
+                $dados['status'] = false;
+                $dados['erro'] = 'Token CSRF invalido';
+                echo json_encode($dados);
+                exit();
             endif;
+
         endif;
-        
     }
 }
 
