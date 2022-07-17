@@ -73,7 +73,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success" id="btn-salvar">Salvar</button>
+                <!--A aparição dos botões é alternada dinamicamente pelo JavaScript -->
+                <button type="button" class="btn btn-success" id="btn-salvar-incluir">Incluir</button>
+                <button type="button" class="btn btn-success" id="btn-salvar-atualizar" style="display:none">Atualizar</button>
             </div>
         </div>
 
