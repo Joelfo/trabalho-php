@@ -22,7 +22,7 @@ class FornecedorDAO extends BaseDAO {
 
             $conn = null;
         } catch(PDOException $e){
-            return "Erro";
+            return false;
         }
     } 
 
@@ -46,7 +46,7 @@ class FornecedorDAO extends BaseDAO {
             $stmt->execute();
             $conexao = null;
         } catch(PDOException $e){
-            die('Query falhou: ' . $e->getMessage());
+            return false;
         }
     }
 
@@ -79,6 +79,18 @@ class FornecedorDAO extends BaseDAO {
         }
     }
 
+    public function delete($id_fornecedor){
+        try{
+            $query = "DELETE FROM `fornecedores` WHERE `id` = ?";
+            $conexao = $this->getConnection();
+            $stmt = $conexao->prepare($query);
+            $stmt->bindValue(1, $id_fornecedor);
+            $stmt->execute();
+            $conexao = null;
+        } catch(PDOException $e){
+            return false;
+        }
+    }
 
     public function getFornecedorCnpj($cnpj){
         $query = 'SELECT * FROM `fornecedores` WHERE `cnpj`=?';

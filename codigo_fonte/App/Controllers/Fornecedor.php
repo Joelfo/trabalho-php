@@ -49,8 +49,8 @@ class Fornecedor extends baseController{
                 $corpo_tabela .= "<td>" . htmlentities(utf8_encode($fornecedor['telefone'])) . "</td>";
                 $corpo_tabela .= "<td>" . htmlentities(utf8_encode($fornecedor['email'])) . "</td>";
                 $corpo_tabela .= "<td>";
-                $corpo_tabela .= "<button class=\"btn btn-outline-success\" id=\"btAlterar\" id-fornecedor=\"" . $fornecedor['id'] . "\" fornecedor-razao-social=\"" . $fornecedor['razao_social'] ."\">Alterar</button>";
-                $corpo_tabela .= "<button class=\"btn btn-outline-danger\" id=\"btApagar\" id-fornecedor=\"" . $fornecedor['id'] . "\" fornecedor-razao-social=\"" . $fornecedor['razao_social'] ."\">Apagar</button>";
+                $corpo_tabela .= "<button class=\"btn btn-outline-success\" id=\"btn-alterar\" id-fornecedor=\"" . $fornecedor['id'] . "\" razao-social=\"" . $fornecedor['razao_social'] ."\">Alterar</button>";
+                $corpo_tabela .= "<button class=\"btn btn-outline-danger\" id=\"btn-apagar\" id-fornecedor=\"" . $fornecedor['id'] . "\" razao-social=\"" . $fornecedor['razao_social'] ."\">Apagar</button>";
                 $corpo_tabela .= "</td>";
                 $corpo_tabela .= "<tr>";
             }
@@ -174,6 +174,18 @@ class Fornecedor extends baseController{
                 exit();
             endif;
 
+        endif;
+    }
+
+    public function apagar($dados){
+        if($_SERVER['REQUEST_METHOD'] == 'GET'):
+            $id = $dados['id-fornecedor'];
+            $fornecedorDAO = $this->getDAO("Fornecedor");
+            $fornecedorDAO->delete($id);
+            $dados = array();
+            $dados['status'] = true;
+            echo json_encode($dados);
+            exit();
         endif;
     }
 }

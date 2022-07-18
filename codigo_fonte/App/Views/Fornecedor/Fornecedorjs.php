@@ -75,7 +75,7 @@ $(document).ready(function(){
 
     /*Atualização de fornecedor */
     /*Abrindo o modal de atualização e pré-preenchendo os campos do formulário*/
-    $(document).on("click", "#btAlterar", function(){
+    $(document).on("click", "#btn-alterar", function(){
         //Limpa formulario do modal
         $('#razao-social').val("");
         $('#cnpj').val("")
@@ -140,7 +140,29 @@ $(document).ready(function(){
 
         })
     })
-    
+
+    $(document).on('click', '#btn-apagar', function(){
+        //alert('flag');
+        var id = $(this).attr('id-fornecedor');
+        var razao_social = $(this).attr("razao-social");
+        var url_ajax = '<?= URL_BASE ?>/Fornecedores/Apagar/' + id;
+        opcao = confirm(`Realmente deseja apagar o fornecedor ${razao_social}?`);
+        if(opcao){
+            $.ajax({
+                url: url_ajax,
+                type: 'GET',
+                dataType: 'json',
+                success:function(dados){
+                    if(dados.status){
+                        alert("Usuário excluído com sucesso!");
+                    }
+                },
+                error:function(){
+                    alert("Não foi possível apagar o usuário");
+                }
+            })
+        }
+    })    
 })
 
 </script>

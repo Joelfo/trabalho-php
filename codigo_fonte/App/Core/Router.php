@@ -24,19 +24,22 @@ $router->post("/logar", "AcessoRestrito:login");
 //FORNECEDORES:
 //Index do dashboard de fornecedores
 $router->get("/Fornecedores", "Fornecedor:index");
-//Método para listar fornecedores
+
+//Método para listar fornecedores(Ler)
 $router->get("/Fornecedores/Listar", "Fornecedor:ajax_lista");
 
-//Incluir um novo fornecedor
+//Incluir um novo fornecedor(Criar)
 $router->get("/Fornecedores/Incluir", "Fornecedor:incluir");
 //Gravar inclusão
 $router->post("/Fornecedores/Incluir/Gravar", "Fornecedor:gravar_inclusao");
 
-//Atualizar um fornecedor
+//Atualizar um fornecedor(Atualizar)
 $router->get("/Fornecedores/Atualizar/{id-fornecedor}", "Fornecedor:atualizar");
 //Gravar atualizações
 $router->post("/Fornecedores/Atualizar/Gravar", 'Fornecedor:gravar_atualizacao');
 
+//Apagar um fornecedor(Deletar)
+$router->get("/Fornecedores/Apagar/{id-fornecedor}", "Fornecedor:apagar");
 
 // DashboardClientes Cliente.php
 $router->get("/Clientes", "Cliente:listarCliente");
