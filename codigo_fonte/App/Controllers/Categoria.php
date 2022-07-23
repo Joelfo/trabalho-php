@@ -14,6 +14,10 @@ class Categoria extends baseController{
             Funcoes::redirecionar("Home");
         }
     }
+
+    public function index(){
+        $this->chamarView("Categoria/Index", [], 'Categoria/Categoriajs');
+    }
 }
 
 ?>

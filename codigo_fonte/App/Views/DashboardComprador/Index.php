@@ -10,7 +10,7 @@
     <div class="card mt-3 border-0">
         <div class="card-body px-2">
             <a href="<?= URL_BASE ?>/Fornecedores" class="btn btn-primary">Fornecedores</a>
-            <a href="<?= URL_BASE . "/Categorias_de_produto" ?>" class="btn btn-primary">Categorias de produto</a>
+            <a href="<?= URL_BASE . "/Categorias" ?>" class="btn btn-primary">Categorias de produto</a>
             <a href="<?= URL_BASE . "/Compra" ?>" class="btn btn-primary">Compras</a>
             <a href="<?= URL_BASE . "/Produto" ?>" class="btn btn-primary">Gerenciar rodutos</a>
             <a href="<?= URL_BASE . "/Cadastrar_compra" ?>" class="btn btn-success">Realizar compra</a>

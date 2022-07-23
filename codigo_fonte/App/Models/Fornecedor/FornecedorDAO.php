@@ -79,12 +79,12 @@ class FornecedorDAO extends BaseDAO {
         }
     }
 
-    public function delete($id_fornecedor){
+    public function delete($id){
         try{
             $query = "DELETE FROM `fornecedores` WHERE `id` = ?";
             $conexao = $this->getConnection();
             $stmt = $conexao->prepare($query);
-            $stmt->bindValue(1, $id_fornecedor);
+            $stmt->bindValue(1, $id);
             $stmt->execute();
             $conexao = null;
         } catch(PDOException $e){
