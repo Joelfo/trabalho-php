@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Models\Cliente;
- 
+namespace APP\Moldels\Cliente\ClienteModel;
 use App\configuration\Connect;
 
-class ClientModel extends Connect{
+include "../../configuration/connect.php";
+
+Class ClienteModel extends Connect{
     
     private $table;
 
@@ -68,4 +69,6 @@ class ClientModel extends Connect{
     }
 }
 
-?>
+
+  $teste = new ClienteModel();
+  ?>

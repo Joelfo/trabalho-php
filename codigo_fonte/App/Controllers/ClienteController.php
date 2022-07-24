@@ -1,16 +1,16 @@
 <?php
-namespace App\Controllers;
-use App\Core\BaseController;
-Use App\Core\Funcoes;
+namespace App\Controllers\ClienteController;
 
-use App\Models\Cliente\ClientModel;
-
+use APP\Moldels\Cliente\ClienteModel;
+use APP\Moldels\Cliente\ClienteModel\ClienteModel as ClienteModelClienteModel;
+//"../Core/Funcoes.php";
 Use GUMP;
-/*
-CRUD DE CLIENTES
-*/
 
-class Cliente extends baseController{
+
+//include "../Models/Cliente/ClienteModel.php";
+
+//Esta  classe nao esta funcionando
+/*class Cliente extends baseController{
     public function __construct(){
         session_start();
         if(!(Funcoes::usuarioLogado() && Funcoes::usuarioVendedor())){
@@ -22,10 +22,10 @@ class Cliente extends baseController{
     public function listarCliente(){
        $this->chamarView('DashboardClientes/cliente');
     }
-}
+ }*/
 
 
-class ClientsController{
+class ClienteController{
 
     private $model;
 
@@ -34,7 +34,7 @@ class ClientsController{
      }*/
 
     function __construct(){
-        $this->model = new ClientModel();
+        $this->model = new ClienteModel();
     }
 
     public function getAll($data=null){
@@ -85,7 +85,7 @@ class ClientsController{
 }
 
 
-
+$teste = new ClienteController;
 
 
 ?>

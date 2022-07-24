@@ -1,11 +1,15 @@
 <?php
+//Namespace App\Controllers;
+use App\Controllers\ClienteController\ClienteController;
+include "menu.php";
 
-    // $nameController = $_GET['c'];
-    // include_once ('./controllers/'.$nameController.'Controller.php');
-    
-    use App\Controllers\ClientsController;
+//include "../../Controllers/ClienteController.php";
 
-    $controller = new ClientsController();
+   
+
+       
+
+    $controller = new ClienteController() ;
 
     $action = (isset($_GET['a']) || isset($_POST['a'])) ? (isset($_POST['a']) ? $_POST['a'] : $_GET['a']) : 'getAll';
     $message = isset($_GET['m']) ? $_GET['m'] : '';
@@ -51,3 +55,6 @@
     {
         $controller->{$action}();
     }
+        echo "testando";
+    
+    ?>
