@@ -23,11 +23,14 @@
         </div>
     <?php endif; ?>
     <h1>Clients List</h1>
-    <form action="index.php">
+
+    <!--  Trecho  que  seria da busca de  clientes
+        <form action="index.php">
         <input class="input" type="search" name="search" placeholder="Pesquisar">
         <input type="hidden" name="a" value="search">
         <input class="button" type="submit" name="submit" value="Submit">
-    </form>
+    </form> -->
+
     <a class="button" href="./index.php?a=goToNew">New client</a>
     <div class="content">
         <table class="table">
@@ -38,7 +41,11 @@
                     <th>UF</th>
                     <th>Email</th>
                     <th>Telefone</th>
-                    <th></th>
+                    <th>CPF</th>
+                    <th>UF</th>
+                    <th>CEP</th>
+                    <th>Bairro</th>
+                    <th>Endereço</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,6 +56,12 @@
                         <td> <?= $data["uf"]; ?> </td>
                         <td> <?= $data["email"]; ?> </td>
                         <td> <?= $data["telefone"]; ?> </td>
+                        <td> <?= $data["cpf"]; ?> </td>
+                        <td> <?= $data["uf"]; ?> </td>
+                        <td> <?= $data["cep"]; ?> </td>
+                        <td> <?= $data["bairro"]; ?> </td>
+                        <td> <?= $data["endereco"]; ?> </td>
+                        
                         <td> 
                             <a class="button btn-edit" href="./index.php?a=search&v=editCreate&search=<?= $data['id'] ?>">Editar</a>
                             <button class="button btn-delete" onclick="verifyDelete(<?= $data['id'] ?>)">Deletar</button> 
@@ -75,3 +88,4 @@
     }
 </script>
 </html>
+

@@ -10,8 +10,9 @@
 <body>
     <a class="button btn-back" href="index.php">Back</a>
     <h1>Clients config</h1>
+
     <div class="content">
-        <form action="index.php" method="GET">
+        <form action="index.php" method="get">
 
             <div class="input-box">
                 <label for="nome">Nome:</label>

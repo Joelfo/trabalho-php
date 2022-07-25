@@ -47,7 +47,7 @@ class ClienteController{
 
     public function search($data,$view=null){
         $resultData = $this->model->search($data,$view);
-        require_once "../views/dashboardCliente/$view.php";
+        require_once "../views/DashboardClientes/$view.php";
     }
 
     public function goToNew(){
@@ -87,7 +87,6 @@ class ClienteController{
 }
 
 
-echo 'viewcontroler';
 
 
 ?>

@@ -52,6 +52,5 @@ include "../Controllers/ClienteController.php";
     {
         $controller->{$action}();
     }
-        echo "viewindex";
     
     ?>
