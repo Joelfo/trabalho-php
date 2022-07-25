@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Models\Cliente;
- 
-use App\configuration\Connect;
+require "../configuration/connect.php";
 
-class ClientModel extends Connect{
+Class ClienteModel extends conexao\Connect{
     
     private $table;
 
@@ -33,7 +31,7 @@ class ClientModel extends Connect{
     }
 
     public function new($data){
-        $sqlUpdate = "INSERT INTO $this->table (nome, cpf, endereco,bairro, cidade, uf, cep, telefone, email) 
+        $sqlUpdate = "INSERT INTO $this->table (nome, cpf, endereco, bairro, cidade, uf, cep, telefone, email) 
         VALUES (:nome, :cpf, :endereco, :bairro, :cidade, :uf, :cep, :telefone, :email)";
         $resultQuery = $this->connection->prepare($sqlUpdate)->execute(['nome'=>$data['nome'],'cpf'=>$data['cpf'],'endereco'=>$data['endereco'],'bairro'=>$data['bairro'],'cidade'=>$data['cidade'],'uf'=>$data['uf'], 'cep'=>$data['cep'],'telefone'=>$data['telefone'],'email'=>$data['email']]) ;
         return $this->verifyReturn($resultQuery);
@@ -68,4 +66,4 @@ class ClientModel extends Connect{
     }
 }
 
-?>
+  ?>

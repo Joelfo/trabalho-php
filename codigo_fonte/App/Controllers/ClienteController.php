@@ -1,16 +1,18 @@
 <?php
-namespace App\Controllers;
-use App\Core\BaseController;
-Use App\Core\Funcoes;
 
-use App\Models\Cliente\ClientModel;
+require_once "../Models/ClienteModel.php";
 
-Use GUMP;
-/*
-CRUD DE CLIENTES
-*/
 
-class Cliente extends baseController{
+
+
+//"../Core/Funcoes.php";
+//Use GUMP;
+
+
+//include "../Models/Cliente/ClienteModel.php";
+
+//Esta  classe nao esta funcionando
+/*class Cliente extends baseController{
     public function __construct(){
         session_start();
         if(!(Funcoes::usuarioLogado() && Funcoes::usuarioVendedor())){
@@ -22,10 +24,10 @@ class Cliente extends baseController{
     public function listarCliente(){
        $this->chamarView('DashboardClientes/cliente');
     }
-}
+ }*/
 
 
-class ClientsController{
+class ClienteController{
 
     private $model;
 
@@ -34,22 +36,22 @@ class ClientsController{
      }*/
 
     function __construct(){
-        $this->model = new ClientModel();
+        $this->model = new ClienteModel;
     }
 
     public function getAll($data=null){
         $resultData = $this->model->getAll();
         $returnMessage = $data;
-        require_once "./views/dashboardCliente/index.php";
+        require_once "../Views/DashboardClientes/index.php";
     }
 
     public function search($data,$view=null){
         $resultData = $this->model->search($data,$view);
-        require_once "./views/dashboardCliente/$view.php";
+        require_once "../views/dashboardCliente/$view.php";
     }
 
     public function goToNew(){
-        require_once "./views/dashboardCliente/editCreate.php";
+        include_once "../Views/DashboardClientes/editCreate.php";
     }
 
     public function new($data){
@@ -85,7 +87,7 @@ class ClientsController{
 }
 
 
-
+echo 'viewcontroler';
 
 
 ?>

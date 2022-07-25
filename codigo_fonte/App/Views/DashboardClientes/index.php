@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +7,12 @@
     <link rel="stylesheet" href="views/css/index.css">
     <title>Clients</title>
 </head>
+
 <body>
-    <?php if(!empty($returnMessage)): ?>
+
+    <?php 
+    
+    if(!empty($returnMessage)): ?>
         <div class="box-message">
             <p><?= $returnMessage ?></p>
             <button class="btn-close-message" onclick="reload()">

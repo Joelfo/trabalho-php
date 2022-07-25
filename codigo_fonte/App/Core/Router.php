@@ -56,6 +56,8 @@ $router->get("/Categorias/Apagar/{id-categoria}", "Categoria:apagar");
 // DashboardClientes Cliente.php
 $router->get("/Clientes", "Cliente:listarCliente");
 
+
+
 // Solicitar um token CSRF para inclusão de usuário. Legal para utilizar com AJAX
 //$router->get("/Fornecedores/Atualizar/{id}", "Fornecedor:atualizar");
 

@@ -1,7 +1,8 @@
 <?php
-    namespace App\configuration;
+    namespace conexao;
     use \PDO;
     use \PDOException;
+    
     define('HOST', 'localhost');
     define('DBNAME', 'estoque');
     define('USER', 'root');

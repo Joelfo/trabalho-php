@@ -1,11 +1,12 @@
 <?php
+//Namespace App\Controllers;
 
-    // $nameController = $_GET['c'];
-    // include_once ('./controllers/'.$nameController.'Controller.php');
-    
-    use App\Controllers\ClientsController;
 
-    $controller = new ClientsController();
+include "../Controllers/ClienteController.php";
+
+      
+
+    $controller = new ClienteController() ;
 
     $action = (isset($_GET['a']) || isset($_POST['a'])) ? (isset($_POST['a']) ? $_POST['a'] : $_GET['a']) : 'getAll';
     $message = isset($_GET['m']) ? $_GET['m'] : '';
@@ -51,3 +52,6 @@
     {
         $controller->{$action}();
     }
+        echo "viewindex";
+    
+    ?>
