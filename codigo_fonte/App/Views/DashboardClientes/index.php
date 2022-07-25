@@ -11,7 +11,7 @@
 <body>
 
     <?php 
-    include "menu.php";
+    
     if(!empty($returnMessage)): ?>
         <div class="box-message">
             <p><?= $returnMessage ?></p>

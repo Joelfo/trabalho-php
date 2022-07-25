@@ -1,13 +1,10 @@
 <?php
 //Namespace App\Controllers;
-use App\Controllers\ClienteController\ClienteController;
-include "menu.php";
 
-//include "../../Controllers/ClienteController.php";
 
-   
+include "../Controllers/ClienteController.php";
 
-       
+      
 
     $controller = new ClienteController() ;
 
@@ -55,6 +52,6 @@ include "menu.php";
     {
         $controller->{$action}();
     }
-        echo "testando";
+        echo "viewindex";
     
     ?>

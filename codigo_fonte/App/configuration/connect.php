@@ -1,5 +1,5 @@
 <?php
-    namespace App\configuration;
+    namespace conexao;
     use \PDO;
     use \PDOException;
     

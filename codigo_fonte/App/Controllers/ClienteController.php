@@ -1,10 +1,12 @@
 <?php
-namespace App\Controllers\ClienteController;
 
-use APP\Moldels\Cliente\ClienteModel;
-use APP\Moldels\Cliente\ClienteModel\ClienteModel as ClienteModelClienteModel;
+require_once "../Models/ClienteModel.php";
+
+
+
+
 //"../Core/Funcoes.php";
-Use GUMP;
+//Use GUMP;
 
 
 //include "../Models/Cliente/ClienteModel.php";
@@ -34,22 +36,22 @@ class ClienteController{
      }*/
 
     function __construct(){
-        $this->model = new ClienteModel();
+        $this->model = new ClienteModel;
     }
 
     public function getAll($data=null){
         $resultData = $this->model->getAll();
         $returnMessage = $data;
-        require_once "./views/dashboardCliente/index.php";
+        require_once "../Views/DashboardClientes/index.php";
     }
 
     public function search($data,$view=null){
         $resultData = $this->model->search($data,$view);
-        require_once "./views/dashboardCliente/$view.php";
+        require_once "../views/dashboardCliente/$view.php";
     }
 
     public function goToNew(){
-        require_once "./views/dashboardCliente/editCreate.php";
+        include_once "../Views/DashboardClientes/editCreate.php";
     }
 
     public function new($data){
@@ -85,7 +87,7 @@ class ClienteController{
 }
 
 
-$teste = new ClienteController;
+echo 'viewcontroler';
 
 
 ?>
