@@ -4,7 +4,7 @@
    recebo um warning */
 $router = new \CoffeeCode\Router\Router('http://localhost/trabalho-php/codigo_fonte');
 //Namespace
-$router->namespace("app\controllers");
+$router->namespace("App\Controllers");
 //Rotas:
 
 //Rotas GET:
@@ -30,7 +30,7 @@ $router->get("/Fornecedores/Listar", "Fornecedor:ajax_lista");
 $router->get("/Fornecedores/Incluir", "Fornecedor:incluir");
 //Gravar inclusão
 $router->post("/Fornecedores/Incluir/Gravar", "Fornecedor:gravar_inclusao");
-//Atualizar um fornecedor(Atualizar)
+//Atualizar os dados de um fornecedor(Atualizar)
 $router->get("/Fornecedores/Atualizar/{id-fornecedor}", "Fornecedor:atualizar");
 //Gravar atualizações
 $router->post("/Fornecedores/Atualizar/Gravar", 'Fornecedor:gravar_atualizacao');
@@ -40,6 +40,18 @@ $router->get("/Fornecedores/Apagar/{id-fornecedor}", "Fornecedor:apagar");
 //Categorias
 //Index do dashboard de categorias
 $router->get("/Categorias", "Categoria:index");
+//Listar Categorias(Ler)
+$router->get("/Categorias/Listar", "Categoria:ajax_lista");
+//Incluir uma nova categoria(Criar)
+$router->get("/Categorias/Incluir", "Categoria:incluir");
+//Salvar categoria a ser incluída
+$router->post("/Categorias/Incluir/Salvar", "Categoria:gravar_inclusao");
+//Atualizar os dados de uma categoria(Atualizar)
+$router->get("/Categorias/Atualizar/{id-categoria}", "Categoria:atualizar");
+//Salva a atualização em uma categoria
+$router->post("/Categorias/Atualizar/Salvar", "Categoria:gravar_atualizacao");
+//Apaga uma determinada categoria(Deletar)
+$router->get("/Categorias/Apagar/{id-categoria}", "Categoria:apagar");
 
 // DashboardClientes Cliente.php
 $router->get("/Clientes", "Cliente:listarCliente");

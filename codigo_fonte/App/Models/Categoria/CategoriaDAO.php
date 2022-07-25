@@ -1,10 +1,10 @@
 <?php
-namespace App\Models\Categoria;
+
 use App\Models\Categoria\Categoria;
 use App\Core\BaseDAO;
-use Exception;
-use PDO;
-use PDOException;
+use \PDO;
+use \PDOException;
+
 
 class CategoriaDAO extends BaseDAO{
     public function get($id){
@@ -17,7 +17,7 @@ class CategoriaDAO extends BaseDAO{
             $stmt->execute();
 
             $conn = null;
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch(PDOException $e){
             throw new Exception("Query falhou por: " . $e->getMessage());
         }
@@ -38,7 +38,7 @@ class CategoriaDAO extends BaseDAO{
 
     public function delete($id){
         try{
-            $query = "DELETE FROM `fornecedores` WHERE `id` = ?";
+            $query = "DELETE FROM `categorias` WHERE `id` = ?";
             $conexao = $this->getConnection();
             $stmt = $conexao->prepare($query);
             $stmt->bindValue(1, $id);
@@ -75,11 +75,11 @@ class CategoriaDAO extends BaseDAO{
      */
     public function update($categoria){  
         try{
-            $query = "UPDATE `categorias` SET `id`=?, `nome_categoria`=?";
+            $query = "UPDATE `categorias` SET `nome_categoria`=? WHERE `id`=?";
             $conexao = $this->getConnection();
             $stmt = $conexao->prepare($query);
-            $stmt->bindValue(1, $categoria->getId());
-            $stmt->bindValue(2, $categoria->getNome_categoria());
+            $stmt->bindValue(1, $categoria->getNome_categoria());
+            $stmt->bindValue(2, $categoria->getId());
             $stmt->execute();
         } catch(PDOException $e){
             throw new Exception("Query falhou por: " . $e->getMessage());

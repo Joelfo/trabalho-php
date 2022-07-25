@@ -8,8 +8,16 @@ class BaseController {
         require_once 'App/Views/Template.php';
     }
 
+    /**
+     * Retorna o objeto DAO(De acesso a dados) de um determinado model
+     * @param String $model
+     * Nome do model que você deseja retornar o DAO
+     * @return $model
+     * Objeto DAO a ser retornado.
+     */
     public function getDAO($model) {
         $nomeArquivo = "App/Models/" . $model . "/" . $model . "DAO.php";
+        //echo $nomeArquivo;
         if(file_exists($nomeArquivo)):
             require_once $nomeArquivo;
             $model = $model . "DAO";
