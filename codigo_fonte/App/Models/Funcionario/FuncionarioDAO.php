@@ -36,7 +36,7 @@ class FuncionarioDAO extends BaseDAO {
             $stmt->execute();
 
             $conn = null;
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch(PDOException $e){
             die('Query falhou: ' . $e->getMessage());
         }
@@ -44,15 +44,35 @@ class FuncionarioDAO extends BaseDAO {
 
 
     public function getFuncionarioCPF($cpf){
-        $query = 'SELECT * FROM `funcionarios` WHERE `cpf`=?';
-        $conn = FuncionarioDAO::getConnection();
+        try{
+            $query = 'SELECT * FROM `funcionarios` WHERE `cpf`=?';
+            $conn = FuncionarioDAO::getConnection();
 
-        $stmt = $conn->prepare($query);
-        $stmt->bindValue(1, $cpf);
-        $stmt->execute();
+            $stmt = $conn->prepare($query);
+            $stmt->bindValue(1, $cpf);
+            $stmt->execute();
 
-        $conn = null;
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+            $conn = null;
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch(PDOException $e){
+            throw new Exception("Query falhou: " . $e->getMessage());
+        }
+    }
+
+    public function readPorPapel($numero_papel){
+        try {
+            $query = 'SELECT * FROM `funcionarios` WHERE `papel` = ?';
+            $conn = FuncionarioDAO::getConnection();
+
+            $stmt = $conn->prepare($query);
+            $stmt->bindValue(1, $numero_papel); 
+            $stmt->execute();
+            
+            $conn = null;
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e){
+            throw new Exception("Query falhou: " . $e->getMessage());
+        }
     }
     
 }

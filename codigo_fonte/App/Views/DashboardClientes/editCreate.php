@@ -12,7 +12,7 @@
     <h1>Clients config</h1>
 
     <div class="content">
-        <form action="index.php" method="get">
+        <form action="index.php" method="POST">
 
             <div class="input-box">
                 <label for="nome">Nome:</label>

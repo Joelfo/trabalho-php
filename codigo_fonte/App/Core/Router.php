@@ -53,6 +53,16 @@ $router->post("/Categorias/Atualizar/Salvar", "Categoria:gravar_atualizacao");
 //Apaga uma determinada categoria(Deletar)
 $router->get("/Categorias/Apagar/{id-categoria}", "Categoria:apagar");
 
+
+//Compras
+//Index
+$router->get("/Compras", "Compra:index");
+//Listar compras(Ler)
+$router->get("/Compras/Listar", "Compra:ajax_lista");
+//Incluir uma nova compra(Criar)
+$router->get("/Compras/Incluir", "Compra:incluir");
+
+
 // DashboardClientes Cliente.php
 $router->get("/Clientes", "Cliente:listarCliente");
 

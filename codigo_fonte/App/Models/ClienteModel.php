@@ -31,6 +31,7 @@ Class ClienteModel extends conexao\Connect{
     } 
 
     public function new($data){
+        var_dump($data);
         $sqlUpdate = "INSERT INTO $this->table (nome, cpf, endereco, bairro, cidade, uf, cep, telefone, email)        
         VALUES  (:nome, :cpf, : endereco, :bairro, :cidade, :uf, :cep, :telefone, :email)";
         $resultQuery = $this->connection->prepare($sqlUpdate)->execute(['nome'=>$data['nome'],'cpf'=>$data['cpf'],'endereco'=>$data['endereco'],'bairro'=>$data['bairro'],'cidade'=>$data['cidade'],'uf'=>$data['uf'], 'cep'=>$data['cep'],'telefone'=>$data['telefone'],'email'=>$data['email']]) ;
