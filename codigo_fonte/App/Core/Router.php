@@ -61,8 +61,26 @@ $router->get("/Compras", "Compra:index");
 $router->get("/Compras/Listar", "Compra:ajax_lista");
 //Incluir uma nova compra(Criar)
 $router->get("/Compras/Incluir", "Compra:incluir");
+//Salvar inclusão
+$router->post("/Compras/Incluir/Salvar", "Compra:gravar_inclusao");
+//Atualizar uma compra(Atualizar)
+$router->get("/Compras/Atualizar/{id}", "Compra:atualizar");
+//Salvar atualização
+$router->post("/Compras/Atualizar/Salvar", "Compra:gravar_atualizacao");
+//Apagar uma compra
+$router->get("/Compras/Apagar/{id}", "Compra:apagar");
 
-
+//Produtos
+//Index
+$router->get("/Produtos", "Produto:index");
+//Listar produtos(Ler)
+$router->get("/Produtos/Listar", "Produto:ajax_lista");
+//Solicitação de Token CSRF
+$router->get("/Produtos/Token", "Produto:enviaTokenCSRF");
+//Liberar produto para venda
+$router->post("/Produtos/Liberar", "Produto:liberaVenda");
+//Bloquear um produto para venda
+$router->post("/Produtos/Bloquear", "Produto:bloqueiaVenda");
 // DashboardClientes Cliente.php
 $router->get("/Clientes", "Cliente:listarCliente");
 

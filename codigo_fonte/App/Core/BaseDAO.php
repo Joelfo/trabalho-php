@@ -6,7 +6,7 @@ use \PDOException;
 
 class BaseDAO{
     public static function getConnection(){
-        $dataBase = "mysql:host=" . HOST . ";dbname=" . DB;
+        $dataBase = "mysql:host=" . HOST . ";dbname=" . DB . ";charset=utf8mb4";
 
         $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 

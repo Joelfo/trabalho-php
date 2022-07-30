@@ -20,7 +20,7 @@ class Compra extends baseController{
     public function index(){
         $dados['fornecedores'] = $this->getDAO('Fornecedor')->read();
         $dados['produtos'] = $this->getDAO('Produto')->read();
-        $dados['funcionarios'] = $this->getDAO('Funcionario')->readPorPapel(2);
+        $dados['funcionarios'] = $this->getDAO('Funcionario')->read();
         $this->chamarView('Compra/Index', $dados, 'Compra/Comprajs');
     }
 
@@ -31,7 +31,7 @@ class Compra extends baseController{
             $corpo_tabela = "";
             if(!empty($lista_compras)):
                 foreach($lista_compras as $compra){
-                    $compra_id = htmlentities(utf8_encode($compra['data_compra']));
+                    $compra_id = htmlentities(utf8_encode($compra['id']));
                     $quantidade_compra = htmlentities(utf8_encode($compra['quantidade_compra']));
                     $data_compra = htmlentities(utf8_encode($compra['data_compra']));
                     $valor_compra = htmlentities(utf8_encode($compra['valor_compra']));
@@ -97,6 +97,148 @@ class Compra extends baseController{
         endif;
     }
 
+    public function gravar_inclusao(){
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'):
+            if($_POST['token-csrf'] == $_SESSION['token_CSRF']):
+                $compra = new \App\Models\Compra\Compra();
+                $compra->setQuantidade_compra($_POST['quantidade-compra']);
+                //A data da compra é calculada como a data no sistema no momento 
+                $data_atual = date('Y-m-d');
+                $compra->setData_compra($data_atual);
+                
+                $produto = $this->getDAO('Produto')->getProdutoNome($_POST['nome-produto']);
+                $fornecedor = $this->getDAO('Fornecedor')->getFornecedorCnpj($_POST['cnpj-fornecedor']);
+                $funcionario = $this->getDAO('Funcionario')->getFuncionarioCpf($_POST['cpf-funcionario']);
+
+                $valor_compra = $_POST['quantidade-compra'] * $produto['preco_compra'];
+                $compra->setValor_compra($valor_compra);
+
+                $compra->setId_fornecedor($fornecedor['id']);
+                $compra->setId_produto($produto['id']);
+                $compra->setId_funcionario($funcionario['id']);
+
+                $dados = array();
+                try{
+                    $compraDAO = $this->getDAO('Compra');
+                    $compraDAO->create($compra);
+
+                    $dados['status'] = true;
+                    echo json_encode($dados);
+                } catch(Exception $e){
+                    $dados['status'] = false;
+                    $dados['erro'] = $e->getMessage();
+                    echo json_encode($dados);
+                }
+                
+                exit();
+            else:
+                $dados['status'] = false;
+                $dados['erro'] = 'Token CSRF invalido';
+                echo json_encode($dados);
+                exit();
+            endif;
+        endif;
+    }
+
+    
+    public function atualizar($dados){
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') :
+            $_SESSION['token_CSRF'] = Funcoes::gerarTokenCSRF();
+            //Token CSRF
+            $dados['token_CSRF'] = $_SESSION['token_CSRF'];
+            //Pegando dados do item que se deseja alterar
+            try {
+                $compraDAO = $this->getDAO('Compra');
+                $compra = $compraDAO->get($dados['id']);
+                $dados['quantidade_compra'] = htmlentities(utf8_encode($compra['quantidade_compra']));
+                $dados['data_compra'] = htmlentities(utf8_encode($compra['data_compra']));
+                $dados['valor_compra'] = htmlentities(utf8_encode($compra['valor_compra']));
+
+                //Extraindo produto, fornecedor e funcionário do BD
+                $fornecedor = $this->getDAO('Fornecedor')->get($compra['id_fornecedor']);
+                $produto = $this->getDAO('Produto')->get($compra['id_produto']);
+                $funcionario = $this->getDAO('Funcionario')->get($compra['id_funcionario']);
+
+                //Preenchendo valores de cnpj(fornecedor), cpf(funcionario) e nome do produto
+                $dados['cnpj_fornecedor'] = htmlentities(utf8_encode($fornecedor['cnpj']));
+                $dados['nome_produto'] = htmlentities(utf8_encode($produto['nome_produto']));
+                $dados['cpf_funcionario'] = htmlentities(utf8_encode($funcionario['cpf']));
+                //Caso sucesso, retorna status true
+                $dados['status'] = true;
+            } catch(Exception $e){
+                //Caso insucesso, retorna status false + causa do erro
+                $dados['erro'] = $e->getMessage();
+                $dados['status'] = false;
+            }
+
+            echo json_encode($dados);
+            exit();
+        else:
+            Funcoes::redirecionar("Home");
+        endif;
+    }
+
+    public function gravar_atualizacao(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'):
+            if($_POST['token-csrf'] == $_SESSION['token_CSRF']):
+                //Instancia o objeto da classe Compra para fazer a atualização
+                $compra = new \App\Models\Compra\Compra();
+                $compra->setId($_POST['id-compra']);
+                $compra->setQuantidade_compra($_POST['quantidade-compra']);
+                $dados = array();
+            
+                //Recupera o produto, fornecedor e funcionario para fazer inserção do id
+                $produto = $this->getDAO('Produto')->getProdutoNome($_POST['nome-produto']);
+                $fornecedor = $this->getDAO('Fornecedor')->getFornecedorCnpj($_POST['cnpj-fornecedor']);
+                $funcionario = $this->getDAO('Funcionario')->getFuncionarioCpf($_POST['cpf-funcionario']);
+                //Calcula valor da compra
+                $valor_compra = $_POST['quantidade-compra'] * $produto['preco_compra'];
+                $compra->setValor_compra($valor_compra);
+
+                $compra->setId_fornecedor($fornecedor['id']);
+                $compra->setId_produto($produto['id']);
+                $compra->setId_funcionario($funcionario['id']);
+                try{
+                    $compraDAO = $this->getDAO('Compra');
+                    $compraDAO->update($compra);
+                    $dados['status'] = true;
+                    
+                } catch(Exception $e){
+                    $dados['status'] = false;
+                    $dados['erro'] = $e->getMessage();
+                    
+                }
+                
+                //Retorna o JSON
+                echo json_encode($dados);
+                exit();
+            else:
+                $dados['status'] = false;
+                $dados['erro'] = 'Token CSRF invalido';
+                echo json_encode($dados);
+                exit();
+            endif;
+        endif;
+    }
+
+    public function apagar($dados){
+        if($_SERVER['REQUEST_METHOD'] == 'GET'):
+            $id = $dados['id'];
+            $compraDAO = $this->getDAO('Compra');
+            try{
+                $compraDAO->delete($id);
+                $dados['status'] = true;
+                echo json_encode($dados);
+            } catch (Exception $e){
+                $dados['status'] = false;
+                $dados['erro'] = $e->getMessage();
+                echo json_encode($dados);
+            }
+            exit();
+        endif;
+        
+    }
     
 }
 

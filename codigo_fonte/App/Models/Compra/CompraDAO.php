@@ -52,7 +52,7 @@ class CompraDAO extends baseDAO{
      */
     public function create($compra){
         try{
-            $query = "INSERT INTO `compras` VALUES(?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO `compras`(`quantidade_compra`, `data_compra`, `valor_compra`, `id_fornecedor`, `id_produto`, `id_funcionario`) VALUES(?, ?, ?, ?, ?, ?)";
             $conexao = $this->getConnection();
             $stmt = $conexao->prepare($query);
             $stmt->bindValue(1, $compra->getQuantidade_compra());
@@ -69,16 +69,15 @@ class CompraDAO extends baseDAO{
 
     public function update($compra){
         try{
-            $query = "UPDATE `compras` SET `quantidade_compra` = ?, `data_compra` = ?, `valor_compra` = ?, `id_fornecedor` = ?, `id_produto` = ?, `id_fornecedor` = ? WHERE id = ?";
+            $query = "UPDATE `compras` SET `quantidade_compra` = ?, `valor_compra` = ?, `id_fornecedor` = ?, `id_produto` = ?, `id_funcionario` = ? WHERE id = ?";
             $conexao = $this->getConnection();
             $stmt = $conexao->prepare($query);
             $stmt->bindValue(1, $compra->getQuantidade_compra());
-            $stmt->bindValue(2, $compra->getData_compra());
-            $stmt->bindValue(3, $compra->getValor_compra());
-            $stmt->bindValue(4, $compra->getId_fornecedor());
-            $stmt->bindValue(5, $compra->getId_produto());
-            $stmt->bindValue(6, $compra->getId_funcionario());
-            $stmt->bindValue(7, $compra->getId());
+            $stmt->bindValue(2, $compra->getValor_compra());
+            $stmt->bindValue(3, $compra->getId_fornecedor());
+            $stmt->bindValue(4, $compra->getId_produto());
+            $stmt->bindValue(5, $compra->getId_funcionario());
+            $stmt->bindValue(6, $compra->getId());
             $stmt->execute();
         } catch(PDOException $e){
             throw new Exception("Query falhou por: " . $e->getMessage());

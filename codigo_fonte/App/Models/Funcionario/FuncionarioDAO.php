@@ -75,6 +75,19 @@ class FuncionarioDAO extends BaseDAO {
         }
     }
     
+    public function read(){
+        try {
+            $query = "SELECT * FROM `funcionarios`";
+            $conexao = $this->getConnection();
+            $stmt = $conexao->query($query);
+            $conexao = null;
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+        } catch(PDOException $e){
+            die('Query falhou: ' . $e->getMessage());
+        }
+    }
+
 }
 
 ?>
